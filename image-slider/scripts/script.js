@@ -41,7 +41,9 @@ const fillImageContainer = (() => {
 })()
 
 const removeActiveStateFromPrevBtn = () => {
-  document.querySelector('.slider-nav-btn.active').classList.remove('active')
+  const activeBtn = document.querySelector('.slider-nav-btn.active')
+  activeBtn.style.background = '#fff'
+  activeBtn.classList.remove('active')
 }
 
 const moveToNextImage = () => {
@@ -51,6 +53,7 @@ const moveToNextImage = () => {
   const currentNavBtn = navigationBtns.find((btn) => btn.getAttribute('data-count-number') == (parseInt(String(currentPosition)[0], 10) + 2 || 1))
   removeActiveStateFromPrevBtn()
   currentNavBtn.classList.add('active')
+  currentNavBtn.style.background = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
 }
 
 const moveToPreviousImage = () => {
@@ -60,6 +63,7 @@ const moveToPreviousImage = () => {
   const currentNavBtn = navigationBtns.find((btn) => btn.getAttribute('data-count-number') == String(currentPosition)[0])
   removeActiveStateFromPrevBtn()
   currentNavBtn.classList.add('active')
+  currentNavBtn.style.background = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
 }
 
 const changeImageByClickingOnNavBtn = (navBtn) => {
@@ -71,10 +75,12 @@ const changeNavButtonState = (e) => {
   if (e.target.classList.contains('active')) return
   removeActiveStateFromPrevBtn()
   e.target.classList.add('active')
+  e.target.style.background = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
   changeImageByClickingOnNavBtn(e.target)
 }
 
 navigationBtns.forEach((btn) => btn.addEventListener('click', changeNavButtonState))
+navigationBtns[0].style.background = '#000'
 nextImageBtn.addEventListener('click', moveToNextImage)
 previousImageBtn.addEventListener('click', moveToPreviousImage)
 

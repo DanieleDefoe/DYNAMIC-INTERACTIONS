@@ -93,9 +93,9 @@
   transition: all .2s linear;
 }
 
-.slider-nav-btn.active {
+/* .slider-nav-btn.active {
   background: #000;
-}
+} */
 
 @media (hover: hover) {
   .image-previous-btn:hover, .image-next-btn:hover {
